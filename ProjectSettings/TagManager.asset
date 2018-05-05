@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - FxTemporaire
+  - projectile
+  - light-barrier
+  - light-beam
+  - mirror
+  - grip
+  - floorMirror
+  - wallMirror
+  - floorMirrorBase
+  - target
+  - Level1
+  - Level2
+  - Level3
+  - Level4
+  - Level5
+  - LevelControl
+  - handMirrorL
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - lightMask
+  - handMirrorR
+  - handMirrorL
+  - floorMirror
+  - wallMirror
+  - cameraRig
+  - wall1
+  - wall2
+  - wall3
+  - wall4
+  - floor
+  - roof
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
