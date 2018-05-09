@@ -282,7 +282,7 @@ MonoBehaviour:
   lightSource: {fileID: 108152563847348552}
   myLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294958847
   contact: 0
   shear: {x: 0, y: 0, z: 0}
   source: {fileID: 0}

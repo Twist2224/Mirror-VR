@@ -22,6 +22,7 @@ TagManager:
   - LevelControl
   - handMirrorL
   - Level0
+  - backpack
   layers:
   - Default
   - TransparentFX

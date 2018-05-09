@@ -6,29 +6,34 @@ public class levels : MonoBehaviour {
 
     private int currReq;
     public int currComplete = 0;
-    public int currlvl = 1;
+    public int currlvl = 0;
 
-    private int[] lvlsReq = { 1, 1, 1, 1, 2 };
-    private int[] lvls = { 1, 2, 3, 4, 5 };
-    private GameObject[][] levelObjects = new GameObject[5][];
+    public AudioClip[] dialog;
+
+    private int[] lvlsReq = {1, 1, 1, 1, 1, 2 };
+    private int[] lvls = {0, 1, 2, 3, 4, 5 };
+    private GameObject[][] levelObjects = new GameObject[6][];
     private GameObject[] currLevelObjects = { };
     private GameObject[] prevLevelObjects;
+    private AudioSource audioEmitter;
 
     private GameObject floorMirror;
     private GameObject wallMirror;
 
     // Use this for initialization
     void Start () {
-        currReq = lvlsReq[currlvl - 1];
+        audioEmitter = gameObject.GetComponent<AudioSource>();
+        audioEmitter.clip = dialog[currlvl];
+        currReq = lvlsReq[currlvl];
         floorMirror = GameObject.FindGameObjectWithTag("floorMirrorBase");
         wallMirror = GameObject.FindGameObjectWithTag("wallMirror");
 
-        if(currlvl < 4)
+        if(currlvl != 4)
         {
             floorMirror.SetActive(false);
 
         }
-        if (currlvl < 3)
+        if (currlvl != 3)
         {
             wallMirror.SetActive(false);
 
@@ -40,7 +45,7 @@ public class levels : MonoBehaviour {
             if (lvl != currlvl)
             {
                 GameObject[] hold = GameObject.FindGameObjectsWithTag("Level" + lvl);
-                levelObjects[lvl - 1] = hold;
+                levelObjects[lvl] = hold;
                 foreach (GameObject levlObject in hold)
                 {
                     levlObject.SetActive(false);
@@ -49,7 +54,7 @@ public class levels : MonoBehaviour {
             else
             {
                 GameObject[] hold = GameObject.FindGameObjectsWithTag("Level" + lvl);
-                levelObjects[lvl - 1] = hold;
+                levelObjects[lvl] = hold;
             }
         }
     }
@@ -59,7 +64,7 @@ public class levels : MonoBehaviour {
 		if(currReq == currComplete)
         {
             currlvl++;
-            currReq= lvlsReq[currlvl - 1];
+            currReq= lvlsReq[currlvl];
             if(currLevelObjects != null)
             {
                 prevLevelObjects = currLevelObjects;
@@ -72,7 +77,7 @@ public class levels : MonoBehaviour {
                 
                 foreach (GameObject objct in levelObjects[i])
                 {
-                    if (currlvl == i + 1)
+                    if (currlvl == i)
                     {
                         objct.SetActive(true);
                     }
@@ -102,6 +107,10 @@ public class levels : MonoBehaviour {
                 wallMirror.SetActive(true);
 
             }
+            audioEmitter.Stop();
+            audioEmitter.PlayOneShot(dialog[currlvl]);
         }
+
+        
 	}
 }

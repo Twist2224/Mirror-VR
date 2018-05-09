@@ -8,6 +8,7 @@ public class swaphandItem : MonoBehaviour {
 	public GameObject handMirrorprefab;
 	public GameObject currentHandheld;
 	private bool inBackPack = false;
+    public bool activeController;
 	private SteamVR_TrackedController controller;
 	private bool handMActive = false;
 
@@ -25,7 +26,7 @@ public class swaphandItem : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        Debug.Log(inBackPack);
+        //Debug.Log(inBackPack);
 
 
     }
@@ -43,8 +44,13 @@ public class swaphandItem : MonoBehaviour {
 
 	private void Triggerpull(object sender, ClickedEventArgs e)
 	{
-        
-		if(inBackPack)
+        GameObject[] hold = GameObject.FindGameObjectsWithTag("LevelControl");
+        if (hold[0].gameObject.GetComponent<levels>().currlvl == 0)
+        {
+            hold[0].gameObject.GetComponent<levels>().currComplete++;
+        }
+
+        if (inBackPack && activeController)
 		{
 			if (gameObject.transform.GetChild(0).tag == "handMirrorL" || gameObject.transform.GetChild(0).tag == "handMirrorR") {
 				Destroy (currentHandheld);
@@ -72,7 +78,7 @@ public class swaphandItem : MonoBehaviour {
 
                 Collider m_ObjectCollider;
                 m_ObjectCollider = GetComponent<Collider>();
-                m_ObjectCollider.enabled = false;
+                //m_ObjectCollider.enabled = false;
             }
 
 		}
@@ -82,17 +88,21 @@ public class swaphandItem : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.transform.gameObject.tag == "mirror")
+		if (other.transform.gameObject.tag == "backpack")
 		{
-			inBackPack = true;
+            Debug.Log(transform.gameObject.tag);
+            inBackPack = true;
 		}
 
 	}
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.transform.gameObject.tag == "mirror")
+		if (other.transform.gameObject.tag == "backpack")
 		{
+            
 			inBackPack = false;
 		}
 	}
+
+
 }

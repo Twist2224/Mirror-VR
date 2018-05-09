@@ -189,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667858170027566}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -94, y: 39, z: 150}
+  m_LocalPosition: {x: 276, y: -497, z: -5}
   m_LocalScale: {x: 9500, y: 9500, z: 9500}
   m_Children:
   - {fileID: 4434338597895860}
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MirrorObject: {fileID: 1380297589490686}
-  VRMode: 0
+  VRMode: 1
 --- !u!136 &136538388040087354
 CapsuleCollider:
   m_ObjectHideFlags: 1
