@@ -108,4 +108,16 @@ public class mirrorGrip : MonoBehaviour {
         }
     }
 
-}
+    //start game
+
+    private void Triggerpull(object sender, ClickedEventArgs e)
+    {
+
+        GameObject[] hold = GameObject.FindGameObjectsWithTag("LevelControl");
+        if(hold[0].gameObject.GetComponent<levels>().currlvl == 0)
+        {
+            hold[0].gameObject.GetComponent<levels>().currComplete++;
+        }
+        
+    }
+   }

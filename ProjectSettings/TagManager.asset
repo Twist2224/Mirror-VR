@@ -21,6 +21,7 @@ TagManager:
   - Level5
   - LevelControl
   - handMirrorL
+  - Level0
   layers:
   - Default
   - TransparentFX
