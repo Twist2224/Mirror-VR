@@ -34,7 +34,7 @@ public class MirrorCameraScript : MonoBehaviour
         {
             foreach (Material m in mirrorRenderer.sharedMaterials)
             {
-                if (m.name == "MirrorMaterial")
+                if (m.name == "MirrorMaterial"+ mirrorScript.mirrorNumber)
                 {
                     mirrorRenderer.sharedMaterial = m;
                     break;

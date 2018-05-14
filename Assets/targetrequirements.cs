@@ -28,11 +28,11 @@ public class targetrequirements : MonoBehaviour {
         {
             if (intensity >= 100f)
             {
-                Debug.Log("++++++you win!!!!");
-               // done = true;
-                //GameObject[] hold = GameObject.FindGameObjectsWithTag("LevelControl");
-                //hold[0].gameObject.GetComponent<levels>().currComplete++;
-                
+                //Debug.Log("++++++you win!!!!");
+                done = true;
+                GameObject[] hold = GameObject.FindGameObjectsWithTag("LevelControl");
+                hold[0].gameObject.GetComponent<levels>().currComplete++;
+
             }
             else
             {

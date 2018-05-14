@@ -11,6 +11,8 @@ public class MirrorScript : MonoBehaviour
     [Tooltip("Texture size for the mirror, depending on how close the player can get to the mirror, this will need to be larger")]
     public int TextureSize = 768;
 
+    public int mirrorNumber = 1;
+
     [Tooltip("Subtracted from the near plane of the mirror")]
     public float ClipPlaneOffset = 0.07f;
 
