@@ -22,7 +22,7 @@ public class levels : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        audioEmitter = gameObject.GetComponent<AudioSource>();
+        audioEmitter = GameObject.FindGameObjectWithTag("speaker").gameObject.GetComponent<AudioSource>();
         audioEmitter.clip = dialog[currlvl];
         currReq = lvlsReq[currlvl];
         floorMirror = GameObject.FindGameObjectWithTag("floorMirrorBase");

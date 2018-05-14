@@ -32,7 +32,7 @@ public class lightContact : MonoBehaviour {
         //Debug.DrawRay(transform.position + transform.localScale.y * transform.up, -transform.up, Color.green);
         if (Physics.Raycast(transform.position + transform.localScale.y * transform.up, -transform.up, out hit, 100f, myLayerMask))
         {
-			//Debug.Log(hit.collider.name + " "+ gameObject.transform.parent.gameObject.name);
+			Debug.Log(hit.collider.name + " "+ gameObject.transform.parent.gameObject.name);
             if (hit.collider.tag == "light-barrier" || hit.collider.tag == "mirror")
             {
                 float magn = Vector3.Distance(hit.point, transform.parent.transform.position);
@@ -74,8 +74,28 @@ public class lightContact : MonoBehaviour {
             if (hit.transform.gameObject.tag == "target")
             {
                 hit.collider.transform.gameObject.GetComponent<targetrequirements>().hits++;
+                currHit = hit.collider.gameObject;
+            } else if(currHit != null && currHit.transform.gameObject.tag == "target")
+            {
+                hit.collider.transform.gameObject.GetComponent<targetrequirements>().hits--;
+                currHit = null;
             }
 
+        }
+        else if (currHit != null && currHit.transform.gameObject.tag == "mirror")
+        {
+            //Debug.Log("off "+ gameObject.transform.parent.gameObject.name);
+            currHit.transform.gameObject.GetComponent<reflectLight>().reflect = false;
+            currHit = null;
+        } else if(currHit != null && currHit.transform.gameObject.tag == "mirror")
+        {
+            hit.collider.transform.gameObject.GetComponent<targetrequirements>().hits--;
+            currHit = null;
+        }
+        else if (currHit != null && currHit.transform.gameObject.tag == "target")
+        {
+            hit.collider.transform.gameObject.GetComponent<targetrequirements>().hits--;
+            currHit = null;
         }
     }
     void OnTriggerEnter(Collider collider)

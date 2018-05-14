@@ -23,6 +23,7 @@ TagManager:
   - handMirrorL
   - Level0
   - backpack
+  - speaker
   layers:
   - Default
   - TransparentFX

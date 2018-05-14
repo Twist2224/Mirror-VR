@@ -30,7 +30,7 @@ public class reflectLight : MonoBehaviour {
             {
                 //Debug.Log("in mirr "+ reflectAngle);
                 //Debug.DrawLine(hitPoint, reflectAngle, Color.red);
-                reflection.gameObject.GetComponentInChildren<lightContact>().myLayerMask -= thisLayerMask.value;
+                //reflection.gameObject.GetComponentInChildren<lightContact>().myLayerMask -= thisLayerMask.value;
                 reflection.gameObject.transform.LookAt(reflectAngle);
                 reflection.gameObject.transform.localRotation = Quaternion.Euler(reflection.gameObject.transform.eulerAngles.x-90, reflection.gameObject.transform.eulerAngles.y, reflection.gameObject.transform.eulerAngles.z);
                 reflection.gameObject.transform.localPosition = hitPoint;
@@ -39,7 +39,7 @@ public class reflectLight : MonoBehaviour {
             } else
             {
 				reflection = Instantiate(lightSource, hitPoint, Quaternion.LookRotation(reflectAngle));
-                reflection.gameObject.GetComponentInChildren<lightContact>().myLayerMask -= thisLayerMask.value;
+                //reflection.gameObject.GetComponentInChildren<lightContact>().myLayerMask -= thisLayerMask.value;
                 reflection.gameObject.transform.LookAt(reflectAngle);
                 reflection.gameObject.transform.localRotation = Quaternion.Euler(reflection.gameObject.transform.eulerAngles.x-90, reflection.gameObject.transform.eulerAngles.y, reflection.gameObject.transform.eulerAngles.z);
                 reflection.gameObject.transform.localPosition = hitPoint;
