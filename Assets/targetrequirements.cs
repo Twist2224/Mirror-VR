@@ -12,14 +12,14 @@ public class targetrequirements : MonoBehaviour {
     private float intensity = 0f;
     private Renderer rend1;
     private bool done = false;
-    //private Renderer rend2;
+    private Renderer rend2;
 
 
     // Use this for initialization
     void Start () {
-        //rend1 = gameObject.transform.parent.GetChild(0).gameObject.GetComponent<Renderer>();
-        //rend2 = gameObject.transform.parent.GetChild(2).gameObject.GetComponent<Renderer>();
-        //clr = rend1.sharedMaterial;
+        rend1 = gameObject.transform.parent.GetChild(0).gameObject.GetComponent<Renderer>();
+        rend2 = gameObject.transform.parent.GetChild(2).gameObject.GetComponent<Renderer>();
+        color = rend1.sharedMaterial.color;
     }
 	
 	// Update is called once per frame
@@ -36,9 +36,11 @@ public class targetrequirements : MonoBehaviour {
             }
             else
             {
-                intensity += Time.time * 1f;
+                intensity += Time.time * 0.1f;
                 //Debug.Log(intensity);
-                //colr.SetColor("_EmissionColor", DynamicGI.SetEmissive(rend1, colr * intensity));
+                Color emission = color * Mathf.LinearToGammaSpace(intensity*0.01f);
+                rend1.material.SetColor("_EmissionColor", emission);
+                rend2.material.SetColor("_EmissionColor", emission);
                 //RendererExtensions.UpdateGIMaterials(rend1);
                 //DynamicGI.UpdateEnvironment();
                 //DynamicGI.SetEmissive(rend1, colr * intensity);
