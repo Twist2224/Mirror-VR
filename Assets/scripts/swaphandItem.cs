@@ -90,7 +90,7 @@ public class swaphandItem : MonoBehaviour {
 	{
 		if (other.transform.gameObject.tag == "backpack")
 		{
-            Debug.Log(transform.gameObject.tag);
+            //Debug.Log(transform.gameObject.tag);
             inBackPack = true;
 		}
 

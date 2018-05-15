@@ -13,6 +13,7 @@ public class targetrequirements : MonoBehaviour {
     private Renderer rend1;
     private bool done = false;
     private Renderer rend2;
+    private AudioSource chargeSound;
 
 
     // Use this for initialization
@@ -20,12 +21,19 @@ public class targetrequirements : MonoBehaviour {
         rend1 = gameObject.transform.parent.GetChild(0).gameObject.GetComponent<Renderer>();
         rend2 = gameObject.transform.parent.GetChild(2).gameObject.GetComponent<Renderer>();
         color = rend1.sharedMaterial.color;
+
+        chargeSound = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (minHits <= hits && !done)
         {
+            
+            if(intensity == 0)
+            {
+                chargeSound.Play();
+            }
             if (intensity >= 100f)
             {
                 //Debug.Log("++++++you win!!!!");
@@ -49,6 +57,13 @@ public class targetrequirements : MonoBehaviour {
                 //RendererExtensions.UpdateGIMaterials(rend2);
             }
             
+        } else if(!done && hits < minHits)
+        {
+            chargeSound.Stop();
+            intensity = 0f;
+            Color emission = color * Mathf.LinearToGammaSpace(intensity);
+            rend1.material.SetColor("_EmissionColor", emission);
+            rend2.material.SetColor("_EmissionColor", emission);
         }
 	}
 }
