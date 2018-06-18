@@ -64,7 +64,40 @@ public class mirrorGrip : MonoBehaviour {
 				currgrip = null;
 			}
 		}
-	}
+
+        if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip" && atGrip)
+        {
+            Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
+            Debug.Log("gripped");
+            Color myColor = new Color();
+            ColorUtility.TryParseHtmlString("#0F0", out myColor);
+            renderer.material.color = myColor;
+        }
+        else if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip")
+        {
+            Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
+            Debug.Log("gripped");
+            Color myColor = new Color();
+            ColorUtility.TryParseHtmlString("#F00", out myColor);
+            renderer.material.color = myColor;
+        }
+        else if (atGrip && gameObject.transform.GetChild(0).tag == "grip")
+        {
+            Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
+            Debug.Log("gripped");
+            Color myColor = new Color();
+            ColorUtility.TryParseHtmlString("#00FFF4", out myColor);
+            renderer.material.color = myColor;
+        }
+        else
+        {
+            Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
+            Color myColor = new Color();
+            ColorUtility.TryParseHtmlString("#60000A", out myColor);
+            renderer.material.color = myColor;
+
+        }
+    }
 
     private void OnEnable()
     {
