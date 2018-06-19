@@ -68,7 +68,6 @@ public class mirrorGrip : MonoBehaviour {
         if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip" && atGrip)
         {
             Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
-            Debug.Log("gripped");
             Color myColor = new Color();
             ColorUtility.TryParseHtmlString("#0F0", out myColor);
             renderer.material.color = myColor;
@@ -76,7 +75,6 @@ public class mirrorGrip : MonoBehaviour {
         else if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip")
         {
             Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
-            Debug.Log("gripped");
             Color myColor = new Color();
             ColorUtility.TryParseHtmlString("#F00", out myColor);
             renderer.material.color = myColor;
@@ -123,7 +121,7 @@ public class mirrorGrip : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-		if (other.transform.gameObject.tag == "grip" && gameObject.transform.GetChild(0).tag == "grip")
+		if (other.transform.gameObject.tag == "grip" && gameObject.transform.GetChild(0).tag == "handGrip")
 		{
 			currgrip = other.gameObject;
 			atGrip = true;
@@ -133,7 +131,7 @@ public class mirrorGrip : MonoBehaviour {
     }
     private void OnTriggerExit(Collider other)
     {
-		if (other.transform.gameObject.tag == "grip" && gameObject.transform.GetChild(0).tag == "grip")
+		if (other.transform.gameObject.tag == "grip" && gameObject.transform.GetChild(0).tag == "handGrip")
 		{
 			atGrip = false;
 			//other.gameObject.GetComponent<floorMirrorMovable> ().numIteractions--;

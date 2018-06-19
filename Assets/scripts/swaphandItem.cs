@@ -100,7 +100,7 @@ public class swaphandItem : MonoBehaviour {
                 m_ObjectCollider = GetComponent<Collider>();
                 m_ObjectCollider.enabled = true;
             }
-			else if (gameObject.transform.GetChild(0).tag == "grip") {
+			else if (gameObject.transform.GetChild(0).tag == "handGrip") {
 				Destroy (currentHandheld);
 				Vector3 localPos = Vector3.zero;
 				localPos.z = -0.05f;

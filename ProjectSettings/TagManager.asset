@@ -24,6 +24,8 @@ TagManager:
   - Level0
   - backpack
   - speaker
+  - handGrip
+  - fadePannel
   layers:
   - Default
   - TransparentFX

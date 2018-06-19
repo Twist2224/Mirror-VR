@@ -20,6 +20,44 @@ public class levels : MonoBehaviour {
     private GameObject floorMirror;
     private GameObject wallMirror;
 
+    public Texture2D fadeTexture ;
+    public float fadeSpeed = 0.05f;
+    public int drawDepth = -1000;
+
+    private float alpha = 0.0f;
+    private int fadeDir = 0;
+
+    private bool faded = false;
+
+    void OnGUI()
+    {
+        if (fadeDir != 0)
+            {
+            alpha += fadeDir * fadeSpeed * Time.deltaTime;
+            alpha = Mathf.Clamp01(alpha);
+            Color fadeCol = GUI.color;
+
+            fadeCol.a = alpha;
+
+            GUI.color = fadeCol;
+
+            GUI.depth = drawDepth;
+
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
+
+        }
+
+        if (faded && alpha == 0)
+        {
+            faded = false;
+            fadeDir = 0;
+        }
+         else if (alpha == 1)
+        {
+            faded = true;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         audioEmitter = GameObject.FindGameObjectWithTag("speaker").gameObject.GetComponent<AudioSource>();
@@ -61,8 +99,16 @@ public class levels : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(currReq == currComplete)
+        if (currReq == currComplete)
         {
+            fadeDir = 1;
+        }
+
+   
+
+        if (currReq == currComplete && faded)
+        {
+            
             currlvl++;
             currReq= lvlsReq[currlvl];
             if(currLevelObjects != null)
@@ -109,6 +155,8 @@ public class levels : MonoBehaviour {
             }
             audioEmitter.Stop();
             audioEmitter.PlayOneShot(dialog[currlvl]);
+
+            fadeDir = -1;
         }
 
         
