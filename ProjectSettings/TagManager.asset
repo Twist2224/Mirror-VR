@@ -26,6 +26,8 @@ TagManager:
   - speaker
   - handGrip
   - fadePannel
+  - Level6
+  - Level7
   layers:
   - Default
   - TransparentFX

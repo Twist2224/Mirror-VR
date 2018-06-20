@@ -10,9 +10,9 @@ public class levels : MonoBehaviour {
 
     public AudioClip[] dialog;
 
-    public int[] lvlsReq = {1, 1, 1, 1, 1, 1,1 };
-    public int[] lvls = {0, 1, 2, 3, 4, 5, 6 };
-    private GameObject[][] levelObjects = new GameObject[6][];
+    public int[] lvlsReq = {1, 1, 1, 1, 1, 1, 1, 1 };
+    public int[] lvls = {0, 1, 2, 3, 4, 5, 6, 7 };
+    private GameObject[][] levelObjects;
     private GameObject[] currLevelObjects = { };
     private GameObject[] prevLevelObjects;
     private AudioSource audioEmitter;
@@ -60,18 +60,19 @@ public class levels : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        levelObjects = new GameObject[lvls.Length][];
         audioEmitter = GameObject.FindGameObjectWithTag("speaker").gameObject.GetComponent<AudioSource>();
         audioEmitter.clip = dialog[currlvl];
         currReq = lvlsReq[currlvl];
         floorMirror = GameObject.FindGameObjectWithTag("floorMirrorBase");
         wallMirror = GameObject.FindGameObjectWithTag("wallMirror");
 
-        if(currlvl != 4)
+        if(currlvl < 4)
         {
             floorMirror.SetActive(false);
 
         }
-        if (currlvl != 3)
+        if (currlvl < 3)
         {
             wallMirror.SetActive(false);
 
@@ -101,6 +102,7 @@ public class levels : MonoBehaviour {
 	void Update () {
         if (currReq == currComplete)
         {
+            
             fadeDir = 1;
         }
 
@@ -143,12 +145,12 @@ public class levels : MonoBehaviour {
                 objct.SetActive(false);
             }
 
-            if (currlvl == 4)
+            if (currlvl >= 4)
             {
                 floorMirror.SetActive(true);
 
             }
-            if (currlvl == 3)
+            if (currlvl >= 3)
             {
                 wallMirror.SetActive(true);
 

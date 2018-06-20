@@ -65,21 +65,21 @@ public class mirrorGrip : MonoBehaviour {
 			}
 		}
 
-        if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip" && atGrip)
+        if (controller.gripped && gameObject.transform.GetChild(0).tag == "handGrip" && atGrip)
         {
             Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
             Color myColor = new Color();
             ColorUtility.TryParseHtmlString("#0F0", out myColor);
             renderer.material.color = myColor;
         }
-        else if (controller.gripped && gameObject.transform.GetChild(0).tag == "grip")
+        else if (controller.gripped && gameObject.transform.GetChild(0).tag == "handGrip")
         {
             Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
             Color myColor = new Color();
             ColorUtility.TryParseHtmlString("#F00", out myColor);
             renderer.material.color = myColor;
         }
-        else if (atGrip && gameObject.transform.GetChild(0).tag == "grip")
+        else if (atGrip && gameObject.transform.GetChild(0).tag == "handGrip")
         {
             Renderer renderer = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>();
             Debug.Log("gripped");
