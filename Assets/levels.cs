@@ -10,8 +10,8 @@ public class levels : MonoBehaviour {
 
     public AudioClip[] dialog;
 
-    private int[] lvlsReq = {1, 1, 1, 1, 1, 2 };
-    private int[] lvls = {0, 1, 2, 3, 4, 5 };
+    public int[] lvlsReq = {1, 1, 1, 1, 1, 1,1 };
+    public int[] lvls = {0, 1, 2, 3, 4, 5, 6 };
     private GameObject[][] levelObjects = new GameObject[6][];
     private GameObject[] currLevelObjects = { };
     private GameObject[] prevLevelObjects;
